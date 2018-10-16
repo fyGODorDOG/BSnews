@@ -8,20 +8,21 @@ import (
 	"strings"
 )
 
-func LoginPage(writer http.ResponseWriter, request *http.Request){
+func LoginPage(writer http.ResponseWriter, request *http.Request) {
 	var realPath string = "Web"
-
 	var resourcePath string = request.URL.Path
 	var path string
 
-	if resourcePath == "/"{
+	if resourcePath == "/" {
 		path = realPath + "/index.html"
-	} else{
+	} else {
 		var resourceType string = resourcePath[strings.LastIndex(resourcePath, "."):]
 
 		switch resourceType {
-		case ".css": writer.Header().Set("Content-type", "text/css")
-		case ".js" : writer.Header().Set("Content-type", "text/javascript")
+		case ".css":
+			writer.Header().Set("Content-type", "text/css")
+		case ".js":
+			writer.Header().Set("Content-type", "text/javascript")
 		}
 		path = realPath + resourcePath
 	}
@@ -38,8 +39,7 @@ func LoginPage(writer http.ResponseWriter, request *http.Request){
 	writer.Write(content)
 }
 
-
-func main(){
+func main() {
 	http.HandleFunc("/", LoginPage)
 
 	http.ListenAndServe(":9000", nil)
