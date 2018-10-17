@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { SubmitButton } from './SubmitButton';
 
 export class Login extends React.Component{
     render(){
@@ -28,7 +29,7 @@ export class Login extends React.Component{
                     </div>
                 </div>
                 <div className="login-panel-section">
-                    <button type="submit" className="btn btn-default"><i className="fa fa-sign-in fa-fw" aria-hidden="true"></i> Login</button> | <a href="#">Create Your Account</a>
+                    <SubmitButton></SubmitButton> | <a href="#">Create Your Account</a>
                 </div>
             </div>
         </div>
